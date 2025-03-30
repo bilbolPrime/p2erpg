@@ -2,10 +2,10 @@
 
 namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
 {
-    public interface IArmorRepository
+    public interface IArmorsRepository
     {
         Task<Armor> GetAsync(int id, long mintId);
         Task<IEnumerable<Armor>> GetAsync(string wallet);
-        Task UpdateAsync(IEnumerable<Armor> armor);
+        Task UpdateAsync(IEnumerable<Armor> armors);
     }
 }

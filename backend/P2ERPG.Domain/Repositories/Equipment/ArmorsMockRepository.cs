@@ -4,10 +4,10 @@ using Microsoft.Extensions.Options;
 
 namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
 {
-    public class ArmorMockRepository : ArmorRepository
+    public class ArmorsMockRepository : ArmorsRepository
     {
 
-        public ArmorMockRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)
+        public ArmorsMockRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)
         {
 
         }
@@ -28,7 +28,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
             };
         }
 
-        public override async Task UpdateAsync(IEnumerable<Armor> armor)
+        public override async Task UpdateAsync(IEnumerable<Armor> armors)
         {
             await Task.CompletedTask;
         }
