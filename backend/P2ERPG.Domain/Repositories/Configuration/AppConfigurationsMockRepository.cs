@@ -12,12 +12,12 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Configuration
 
         }
 
-        public override async Task UpdateAppConfigs(string fieldName, string fieldValue)
+        public override async Task UpdateAsync(string fieldName, string fieldValue)
         {
             await Task.CompletedTask;
         }
 
-        public override async Task<AppConfiguration> Get(string fieldName)
+        public override async Task<AppConfiguration> GetAsync(string fieldName)
         {
             return new AppConfiguration() { AppConfigurationId = 1, FieldName = fieldName, FieldValue = fieldName };
         }

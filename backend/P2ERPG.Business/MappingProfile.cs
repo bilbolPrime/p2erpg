@@ -1,5 +1,8 @@
 ﻿
 using AutoMapper;
+using BilbolStack.Boonamai.P2ERPG.Business.Records.Characters;
+using BilbolStack.Boonamai.P2ERPG.Domain.Business.Equipment;
+using Entities = BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 
 
 namespace BilbolStack.Boonamai.P2ERPG.Business
@@ -8,7 +11,15 @@ namespace BilbolStack.Boonamai.P2ERPG.Business
     {
         public MappingProfile()
         {
-            //CreateMap<A, B>();
+            CreateMap<Entities.Characters.Character, Character>();
+            CreateMap<Entities.Equipment.Armor, Armor>();
+            CreateMap<Entities.Equipment.Shield, Shield>();
+            CreateMap<Entities.Equipment.Weapon, Weapon>();
+
+            CreateMap<Character, Entities.Characters.Character>();
+            CreateMap<Armor, Entities.Equipment.Armor>();
+            CreateMap<Shield, Entities.Equipment.Shield>();
+            CreateMap<Weapon, Entities.Equipment.Weapon>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2ERPG.Api", "P2ERPG.Api.csproj", "{07E680A4-C85D-4F6A-BF9D-3F17CA1CA769}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2ERPG.Common", "..\P2ERPG.Common\P2ERPG.Common.csproj", "{BA7540C6-CCDA-43F9-9DD7-17206AC68425}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2ERPG.Business", "..\P2ERPG.Business\P2ERPG.Business.csproj", "{4E34768E-47AC-464B-B4F7-AA7C684FBB71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2ERPG.Crypto", "..\P2ERPG.Crypto\P2ERPG.Crypto.csproj", "{4ED7561A-8CA6-46A0-8B12-C33275F110D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4E34768E-47AC-464B-B4F7-AA7C684FBB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E34768E-47AC-464B-B4F7-AA7C684FBB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E34768E-47AC-464B-B4F7-AA7C684FBB71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ED7561A-8CA6-46A0-8B12-C33275F110D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ED7561A-8CA6-46A0-8B12-C33275F110D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ED7561A-8CA6-46A0-8B12-C33275F110D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ED7561A-8CA6-46A0-8B12-C33275F110D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,15 +6,15 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Configuration
 {
     public class AppConfigurationsRepository : BaseRepository<AppConfiguration>, IAppConfigurationsRepository
     {
-        private const string GET_APP_CONFIG = "appconfigs_get";
-        private const string UPDATE_APP_CONFIG = "appconfigs_update";
+        private const string GET_APP_CONFIG = "";
+        private const string UPDATE_APP_CONFIG = "";
 
         public AppConfigurationsRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)
         {
 
         }
 
-        public virtual async Task UpdateAppConfigs(string fieldName, string fieldValue)
+        public virtual async Task UpdateAsync(string fieldName, string fieldValue)
         {
             var param = new
             {
@@ -25,7 +25,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Configuration
             await Execute(UPDATE_APP_CONFIG, param);
         }
 
-        public virtual async Task<AppConfiguration> Get(string fieldName)
+        public virtual async Task<AppConfiguration> GetAsync(string fieldName)
         {
             var param = new
             {

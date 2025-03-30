@@ -13,13 +13,13 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Configuration
 
         public async Task<string> GetConfiguration(string configurationName)
         {
-            var result = await _appConfigurationsRepository.Get(configurationName);
+            var result = await _appConfigurationsRepository.GetAsync(configurationName);
             return result == null ? null : result.FieldValue;
         }
 
         public async Task UpdateConfiguration(string configurationName, string configurationValue)
         {
-            await _appConfigurationsRepository.UpdateAppConfigs(configurationName, configurationValue);
+            await _appConfigurationsRepository.UpdateAsync(configurationName, configurationValue);
         }
     }
 }
