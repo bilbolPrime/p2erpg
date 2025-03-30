@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>BilbolStack.Boonamai.P2ERPG.Business</AssemblyName>
+    <RootNamespace>BilbolStack.Boonamai.P2ERPG.Business</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\P2ERPG.Common\P2ERPG.Common.csproj" />
+    <ProjectReference Include="..\P2ERPG.Domain\P2ERPG.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

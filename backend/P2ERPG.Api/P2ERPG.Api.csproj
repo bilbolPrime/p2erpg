@@ -10,7 +10,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.3" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\P2ERPG.Business\P2ERPG.Business.csproj" />
+    <ProjectReference Include="..\P2ERPG.Common\P2ERPG.Common.csproj" />
+    <ProjectReference Include="..\P2ERPG.Domain\P2ERPG.Domain.csproj" />
   </ItemGroup>
 
 </Project>

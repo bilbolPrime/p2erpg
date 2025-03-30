@@ -1,5 +1,5 @@
 using BilbolStack.Boonamai.P2ERPG.Api.Models.Responses;
-using BilbolStack.Boonamai.P2ERPG.Api.Models.Settings;
+using BilbolStack.Boonamai.P2ERPG.Common.Options;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 

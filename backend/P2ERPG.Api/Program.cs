@@ -1,6 +1,7 @@
 
-using BilbolStack.Boonamai.P2ERPG.Api.Models.Settings;
-using Microsoft.Extensions.Configuration;
+using BilbolStack.Boonamai.P2ERPG.Business;
+using BilbolStack.Boonamai.P2ERPG.Common.Options;
+using BilbolStack.Boonamai.P2ERPG.Domain;
 using Scalar.AspNetCore;
 
 namespace BilbolStack.Boonamai.P2ERPG.Api
@@ -15,6 +16,9 @@ namespace BilbolStack.Boonamai.P2ERPG.Api
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
             builder.Services.AddEndpointsApiExplorer();
+
+            DomainBootstrapper.BootstrapDomain(builder.Services);
+            BusinessBootstrapper.BootstrapBusiness(builder.Services);
 
             builder.Services.AddOptions<EnvironmentSettings>().BindConfiguration(EnvironmentSettings.Key);
 

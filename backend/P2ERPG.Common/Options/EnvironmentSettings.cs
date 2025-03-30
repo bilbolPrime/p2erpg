@@ -1,4 +1,4 @@
-﻿namespace BilbolStack.Boonamai.P2ERPG.Api.Models.Settings
+﻿namespace BilbolStack.Boonamai.P2ERPG.Common.Options
 {
     public class EnvironmentSettings
     {
