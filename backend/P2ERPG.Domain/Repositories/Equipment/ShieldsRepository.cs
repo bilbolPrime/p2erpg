@@ -40,5 +40,10 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
         {
             throw new NotImplementedException();
         }
+
+        public virtual async Task UpdateAsync(Shield shield)
+        {
+            await Task.CompletedTask;
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Armors
 
         public async Task UpdateAsync(IEnumerable<Armor> armors)
         {
-            var mappedData = _mapper.Map<Entities.Equipment.Armor>(armors);
+            var mappedData = _mapper.Map<IEnumerable<Entities.Equipment.Armor>>(armors);
             await _armorsRepository.UpdateAsync(mappedData);
         }
     }

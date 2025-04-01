@@ -33,10 +33,15 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
                 wallet
             };
 
-            return await GetList(GET_ARMORS, param);
+            return await GetList(GET_ARMOR, param);
         }
 
         public virtual async Task UpdateAsync(IEnumerable<Armor> armors)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual Task UpdateAsync(Armor armor)
         {
             throw new NotImplementedException();
         }

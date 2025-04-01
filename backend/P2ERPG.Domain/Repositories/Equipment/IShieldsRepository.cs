@@ -7,5 +7,6 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
         Task<Shield> GetAsync(int id, long mintId);
         Task<IEnumerable<Shield>> GetAsync(string wallet);
         Task UpdateAsync(IEnumerable<Shield> shields);
+        Task UpdateAsync(Shield shield);
     }
 }

@@ -1,8 +1,8 @@
 ﻿
 using AutoMapper;
 using BilbolStack.Boonamai.P2ERPG.Business.Records.Characters;
-using BilbolStack.Boonamai.P2ERPG.Domain.Business.Equipment;
 using Entities = BilbolStack.Boonamai.P2ERPG.Domain.Entities;
+using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
 
 
 namespace BilbolStack.Boonamai.P2ERPG.Business

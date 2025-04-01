@@ -32,5 +32,10 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
         {
             await Task.CompletedTask;
         }
+
+        public override async Task UpdateAsync(Weapon weapon)
+        {
+            await Task.CompletedTask;
+        }
     }
 }
