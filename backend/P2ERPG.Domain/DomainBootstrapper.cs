@@ -10,7 +10,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain
         public static void BootstrapDomain(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IAppConfigurationsRepository, AppConfigurationsMockRepository>();
-            serviceCollection.AddTransient<IArmorRepository, ArmorMockRepository>();
+            serviceCollection.AddTransient<IArmorsRepository, ArmorsMockRepository>();
             serviceCollection.AddTransient<IWeaponsRepository, WeaponsMockRepository>();
             serviceCollection.AddTransient<IShieldsRepository, ShieldsMockRepository>();
             serviceCollection.AddTransient<ICharactersRepository, CharactersMockRepository>();

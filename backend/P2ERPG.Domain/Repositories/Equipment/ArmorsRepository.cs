@@ -4,13 +4,13 @@ using Microsoft.Extensions.Options;
 
 namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
 {
-    public class ArmorRepository : BaseRepository<Armor>, IArmorRepository
+    public class ArmorsRepository : BaseRepository<Armor>, IArmorsRepository
     {
-        private const string GET_ARMOR_S = "";
+        private const string GET_ARMORS = "";
         private const string GET_ARMOR = "";
 
 
-        public ArmorRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)
+        public ArmorsRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)
         {
 
         }
@@ -23,7 +23,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
                 mintId
             };
 
-            return (await GetList(GET_ARMOR, param)).FirstOrDefault();
+            return (await GetList(GET_ARMORS, param)).FirstOrDefault();
         }
 
         public virtual async Task<IEnumerable<Armor>> GetAsync(string wallet)
@@ -33,10 +33,10 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
                 wallet
             };
 
-            return await GetList(GET_ARMOR_S, param);
+            return await GetList(GET_ARMORS, param);
         }
 
-        public virtual async Task UpdateAsync(IEnumerable<Armor> armor)
+        public virtual async Task UpdateAsync(IEnumerable<Armor> armors)
         {
             throw new NotImplementedException();
         }
