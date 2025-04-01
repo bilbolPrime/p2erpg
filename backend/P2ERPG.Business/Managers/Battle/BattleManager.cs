@@ -34,7 +34,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 {
                     var damage = (int)((0.1f + rnd.NextDouble()) * battle.attacker.strength * DamageFactor(battle.attWeaponType, battle.defArmorType, battle.defShieldType));
                     hpDefender -= damage;
-                    rounds.Add(new BattleRound(true, damage, hpAttacker));
+                    rounds.Add(new BattleRound(true, damage, hpDefender));
                 }
 
                 round++;
