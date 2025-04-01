@@ -1,4 +1,5 @@
 
+using AutoMapper;
 using BilbolStack.Boonamai.P2ERPG.Business;
 using BilbolStack.Boonamai.P2ERPG.Common.Options;
 using BilbolStack.Boonamai.P2ERPG.Domain;
@@ -16,6 +17,12 @@ namespace BilbolStack.Boonamai.P2ERPG.Api
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
             builder.Services.AddEndpointsApiExplorer();
+
+            var config = new MapperConfiguration(c =>
+            {
+                c.AddProfile<MappingProfile>();
+            });
+            builder.Services.AddSingleton<IMapper>(s => config.CreateMapper());
 
             DomainBootstrapper.BootstrapDomain(builder.Services);
             BusinessBootstrapper.BootstrapBusiness(builder.Services);

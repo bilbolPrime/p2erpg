@@ -2,10 +2,11 @@
 {
     public enum WeaponType
     {
-        Sword = 0,
-        TwoHandedSword = 1,
-        Mace = 2,
-        TwoHandedMace = 3,
-        Bow = 4
+        Fists = 0,
+        Sword = 1,
+        TwoHandedSword = 2,
+        Mace = 3,
+        TwoHandedMace = 4,
+        Bow = 5
     }
 }
