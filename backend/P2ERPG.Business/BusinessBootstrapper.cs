@@ -3,6 +3,7 @@ using BilbolStack.Boonamai.P2ERPG.Business.Managers.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Characters;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle;
+using BilbolStack.Boonamai.P2ERPG.Business.Managers.Migrations;
 
 namespace BilbolStack.Boonamai.P2ERPG.Business
 {
@@ -14,6 +15,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business
             serviceCollection.AddSingleton<IHealthManager, HealthManager>();
             serviceCollection.AddSingleton<ICharactersManager, CharactersManager>();
             serviceCollection.AddSingleton<IBattleManager, MockBattleManager>();
+            serviceCollection.AddSingleton<IDBMigrationManager, DBMigrationManager>();
         }
     }
 }

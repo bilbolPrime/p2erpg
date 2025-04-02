@@ -2,6 +2,7 @@
 {
     public class DBSettings
     {
-        public string ConnectionString { get; set; }
+        public const string Key = "ConnectionStrings";
+        public string DefaultConnection { get; set; }
     }
 }

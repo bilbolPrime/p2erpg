@@ -1,8 +1,10 @@
 
 using AutoMapper;
 using BilbolStack.Boonamai.P2ERPG.Business;
+using BilbolStack.Boonamai.P2ERPG.Business.Managers.Migrations;
 using BilbolStack.Boonamai.P2ERPG.Common.Options;
 using BilbolStack.Boonamai.P2ERPG.Domain;
+using Microsoft.Extensions.DependencyInjection;
 using Scalar.AspNetCore;
 
 namespace BilbolStack.Boonamai.P2ERPG.Api
@@ -14,6 +16,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Api
             var builder = WebApplication.CreateBuilder(args);
             var configuration = new ConfigurationBuilder();
 
+            
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
             builder.Services.AddEndpointsApiExplorer();
@@ -28,6 +31,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Api
             BusinessBootstrapper.BootstrapBusiness(builder.Services);
 
             builder.Services.AddOptions<EnvironmentSettings>().BindConfiguration(EnvironmentSettings.Key);
+            builder.Services.AddOptions<DBSettings>().BindConfiguration(DBSettings.Key);
 
             builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
@@ -56,8 +60,14 @@ namespace BilbolStack.Boonamai.P2ERPG.Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
             app.MapControllers();
+            
+            // This is very bad
+            using (var provider = builder.Services.BuildServiceProvider())
+            {
+                var migrator = provider.GetRequiredService<IDBMigrationManager>();
+                migrator.Migrate();
+            }
 
             app.Run();
         }

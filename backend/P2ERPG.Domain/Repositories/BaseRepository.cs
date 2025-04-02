@@ -13,7 +13,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories
         private SecureString _connectionString;
         public BaseRepository(IOptions<DBSettings> dbSettings)
         {
-            _connectionString = dbSettings?.Value?.ConnectionString?.ToSecureString()!;
+            _connectionString = dbSettings?.Value?.DefaultConnection?.ToSecureString()!;
         }
 
         protected virtual async Task<IEnumerable<T>> GetList(string query, object param = null)
@@ -32,19 +32,19 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories
             }
         }
 
-        protected virtual async Task<int> Execute(string query, object param = null)
+        protected virtual async Task<int> Execute(string query, object param = null, CommandType commandType = CommandType.StoredProcedure)
         {
             using (var conn = new SqlConnection(GetConnectionString()))
             {
-                return await conn.ExecuteAsync(query, param, commandType: CommandType.StoredProcedure);
+                return await conn.ExecuteAsync(query, param, commandType: commandType);
             }
         }
 
-        protected virtual async Task<V> ExecuteScalar<V>(string query, object param = null)
+        protected virtual async Task<V> ExecuteScalar<V>(string query, object param = null, CommandType commandType = CommandType.StoredProcedure)
         {
             using (var conn = new SqlConnection(GetConnectionString()))
             {
-                return await conn.ExecuteScalarAsync<V>(query, param, commandType: CommandType.StoredProcedure);
+                return await conn.ExecuteScalarAsync<V>(query, param, commandType: commandType);
             }
         }
 
