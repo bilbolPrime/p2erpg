@@ -2,6 +2,7 @@
 {
     public class Armor : EquipmentBase
     {
-
+        public int ArmorId { get; set; }
+        public int ArmorType { get; set; }
     }
 }

@@ -2,5 +2,5 @@
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Records.Characters
 {
-    public record Character(int id, long mintId, string wallet, CharacterType type, int hp, int strength, int speed, int agility, int concentration, int endurance, int experience, int level);
+    public record Character(int characterId, long mintId, string wallet, CharacterType characterType, int hp, int strength, int speed, int agility, int concentration, int endurance, int experience, int level);
 }

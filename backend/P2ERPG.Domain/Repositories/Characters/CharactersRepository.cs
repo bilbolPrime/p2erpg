@@ -1,14 +1,14 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Common.Options;
 using BilbolStack.Boonamai.P2ERPG.Domain.Entities.Characters;
 using Microsoft.Extensions.Options;
+using MoreLinq;
 
 namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
 {
     public class CharactersRepository : BaseRepository<Character>, ICharactersRepository
     {
         private const string GET_CHARACTERS = "";
-        private const string GET_CHARACTER = "";
-        private const string UPDATE_CHARACTER = "";
+        private const string UPDATE_CHARACTERS = "[P2ERPG].[characters_update]";
 
         public CharactersRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)
         {
@@ -17,37 +17,27 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
 
         public virtual async Task UpdateAsync(Character character)
         {
-            var param = new
-            {
-                character.Id,
-                character.Strength,
-                character.Concentration,
-                character.Endurance,
-                character.Agility,
-                character.HP,
-                character.Speed,
-                character.Experience,
-                character.Level
-            };
-
-            await Execute(UPDATE_CHARACTER, param);
+            await UpdateAsync(new List<Character>() { character });
         }
 
-        public virtual async Task<Character> GetAsync(int id, long mintId)
+        public virtual async Task<Character> GetAsync(int characterId, long mintId)
         {
             var param = new
             {
-                id,
-                mintId
+                characterId,
+                mintId,
+                wallet = string.Empty
             };
 
-            return (await GetList(GET_CHARACTER, param)).FirstOrDefault();
+            return (await GetList(GET_CHARACTERS, param)).FirstOrDefault();
         }
 
         public virtual async Task<IEnumerable<Character>> GetAsync(string wallet)
         {
             var param = new
             {
+                characterId = -1,
+                mintId = -1,
                 wallet
             };
 
@@ -56,7 +46,12 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
 
         public virtual async Task UpdateAsync(IEnumerable<Character> characters)
         {
-            throw new NotImplementedException();
+            var param = new
+            {
+                characters = characters.ToDataTable()
+            };
+
+            await Execute(UPDATE_CHARACTERS, param);
         }
     }
 }

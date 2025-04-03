@@ -2,5 +2,5 @@
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment
 {
-    public record Weapon(int id, long mintId, string wallet, WeaponType equipmentType, int roll);
+    public record Weapon(int weaponId, long mintId, string wallet, WeaponType weaponType, int roll);
 }

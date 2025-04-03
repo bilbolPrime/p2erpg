@@ -37,7 +37,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Migrations
                     {
                         foreach (var batch in reader.ReadToEnd().Replace("\r\n", " ").Split("GO"))
                         {
-                            if(string.IsNullOrEmpty(batch)) continue;
+                            if(string.IsNullOrEmpty(batch.Trim())) continue;
                             await _migratorRepository.MigrateAsync(batch);
                         }
                         await _configurationManager.UpdateConfiguration(MigrationAt, (++migrationAt).ToString());

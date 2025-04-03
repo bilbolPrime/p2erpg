@@ -13,18 +13,18 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
         }
 
 
-        public override async Task<Weapon> GetAsync(int id, long mintId)
+        public override async Task<Weapon> GetAsync(int weaponId, long mintId)
         {
-            return new Weapon() { Id = id, MintId = mintId, EquipmentType = id % 3, Wallet = mintId.ToString()};
+            return new Weapon() { WeaponId = weaponId, MintId = mintId, WeaponType = weaponId % 3, Wallet = mintId.ToString()};
         }
 
         public override async Task<IEnumerable<Weapon>> GetAsync(string wallet)
         {
             return new List<Weapon>()
             {
-                new Weapon() { Wallet = wallet, EquipmentType = 0, Id = 1, MintId = 1, Roll = 1 },
-                new Weapon() { Wallet = wallet, EquipmentType = 1, Id = 2, MintId = 2, Roll = 2 },
-                new Weapon() { Wallet = wallet, EquipmentType = 2, Id = 3, MintId = 3, Roll = 3 },
+                new Weapon() { Wallet = wallet, WeaponType = 0, WeaponId = 1, MintId = 1, Roll = 1 },
+                new Weapon() { Wallet = wallet, WeaponType = 1, WeaponId = 2, MintId = 2, Roll = 2 },
+                new Weapon() { Wallet = wallet, WeaponType = 2, WeaponId = 3, MintId = 3, Roll = 3 },
             };
         }
 
