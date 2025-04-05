@@ -1,6 +1,6 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
 
-namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Shields
+namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Shields
 {
     public interface IShieldsManager
     {

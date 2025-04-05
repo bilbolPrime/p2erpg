@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\5_weapons.sql" />
+    <EmbeddedResource Include="Migrations\4_shields.sql" />
+    <EmbeddedResource Include="Migrations\3_armors.sql" />
     <EmbeddedResource Include="Migrations\2_characters.sql" />
     <EmbeddedResource Include="Migrations\1_init.sql">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

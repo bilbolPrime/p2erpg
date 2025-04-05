@@ -7,7 +7,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
 {
     public class CharactersRepository : BaseRepository<Character>, ICharactersRepository
     {
-        private const string GET_CHARACTERS = "";
+        private const string GET_CHARACTERS = "[P2ERPG].[characters_get]";
         private const string UPDATE_CHARACTERS = "[P2ERPG].[characters_update]";
 
         public CharactersRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)

@@ -1,7 +1,9 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Business.Managers.Configuration;
 using BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Migrator;
+using MoreLinq;
 using System;
 using System.Reflection;
+using System.Text;
 using System.Transactions;
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Migrations
@@ -35,10 +37,13 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Migrations
                 {
                     using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                     {
-                        foreach (var batch in reader.ReadToEnd().Replace("\r\n", " ").Split("GO"))
+                        foreach (var batch in reader.ReadToEnd().Split("GO"))
                         {
-                            if(string.IsNullOrEmpty(batch.Trim())) continue;
-                            await _migratorRepository.MigrateAsync(batch);
+                            StringBuilder sb = new StringBuilder();
+                            batch.Split("\r\n").ForEach(i => sb.AppendLine(i));
+                            var result = sb.ToString().Trim();
+                            if (string.IsNullOrEmpty(result)) continue;
+                            await _migratorRepository.MigrateAsync(result);
                         }
                         await _configurationManager.UpdateConfiguration(MigrationAt, (++migrationAt).ToString());
                         scope.Complete();

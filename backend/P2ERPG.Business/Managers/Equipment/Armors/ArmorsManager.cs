@@ -3,7 +3,7 @@ using BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment;
 using Entities = BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
 
-namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Armors
+namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Armors
 {
     public class ArmorsManager : IArmorsManager
     {

@@ -1,6 +1,6 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
 
-namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Weapons
+namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Weapons
 {
     public interface IWeaponsManager
     {
