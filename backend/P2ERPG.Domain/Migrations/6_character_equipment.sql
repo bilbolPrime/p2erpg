@@ -38,17 +38,17 @@ begin
 		insert into CharacterEquipment(CharacterId) select @CharacterId
 	end
 
-	if @WeaponId <> -1
+	if @WeaponId is null or @WeaponId <> -1
 	begin
 		update CharacterEquipment set WeaponId = @WeaponId where CharacterId = @CharacterId
 	end
 
-	if @ArmorId <> -1
+	if @ArmorId is null or @ArmorId <> -1
 	begin
 		update CharacterEquipment set ArmorId = @ArmorId where CharacterId = @CharacterId
 	end
 
-	if @ShieldId <> -1
+	if @ShieldId is null or @ShieldId <> -1
 	begin
 		update CharacterEquipment set ShieldId = @ShieldId where CharacterId = @CharacterId
 	end
