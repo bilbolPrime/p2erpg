@@ -12,11 +12,13 @@ namespace BilbolStack.Boonamai.P2ERPG.Business
         public MappingProfile()
         {
             CreateMap<Entities.Characters.Character, Character>();
+            CreateMap<Entities.Characters.CharacterAssignedEquipment, CharacterAssignedEquipment>();
             CreateMap<Entities.Equipment.Armor, Armor>();
             CreateMap<Entities.Equipment.Shield, Shield>();
             CreateMap<Entities.Equipment.Weapon, Weapon>();
 
             CreateMap<Character, Entities.Characters.Character>();
+            CreateMap<CharacterAssignedEquipment, Entities.Characters.CharacterAssignedEquipment>();
             CreateMap<Armor, Entities.Equipment.Armor>();
             CreateMap<Shield, Entities.Equipment.Shield>();
             CreateMap<Weapon, Entities.Equipment.Weapon>();

@@ -15,6 +15,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain
             serviceCollection.AddTransient<IWeaponsRepository, WeaponsMockRepository>();
             serviceCollection.AddTransient<IShieldsRepository, ShieldsMockRepository>();
             serviceCollection.AddTransient<ICharactersRepository, CharactersMockRepository>();
+            serviceCollection.AddTransient<ICharacterAssignedEquipmentRepository, CharacterAssignedEquipmentRepository>();
             serviceCollection.AddTransient<IMigratorRepository, MigratorRepository>();
         }
     }

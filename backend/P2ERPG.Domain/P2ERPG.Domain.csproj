@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\6_character_equipment.sql" />
     <EmbeddedResource Include="Migrations\5_weapons.sql" />
     <EmbeddedResource Include="Migrations\4_shields.sql" />
     <EmbeddedResource Include="Migrations\3_armors.sql" />
