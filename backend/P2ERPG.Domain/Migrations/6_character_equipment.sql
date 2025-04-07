@@ -40,17 +40,17 @@ begin
 
 	if @WeaponId is null or @WeaponId <> -1
 	begin
-		update CharacterEquipment set WeaponId = @WeaponId where CharacterId = @CharacterId
+		update [P2ERPG].CharacterEquipment set WeaponId = @WeaponId where CharacterId = @CharacterId
 	end
 
 	if @ArmorId is null or @ArmorId <> -1
 	begin
-		update CharacterEquipment set ArmorId = @ArmorId where CharacterId = @CharacterId
+		update [P2ERPG].CharacterEquipment set ArmorId = @ArmorId where CharacterId = @CharacterId
 	end
 
 	if @ShieldId is null or @ShieldId <> -1
 	begin
-		update CharacterEquipment set ShieldId = @ShieldId where CharacterId = @CharacterId
+		update [P2ERPG].CharacterEquipment set ShieldId = @ShieldId where CharacterId = @CharacterId
 	end
 end
 GO

@@ -31,7 +31,7 @@ CREATE PROCEDURE [P2ERPG].[wallets_create]
 as
 begin
 	declare @nonce as bigint = rand() * POWER(10, 5) * POWER(10, 5) * POWER(10, 5)
-	insert into Wallets(Wallet,  ActiveNonce) select @Wallet, Cast(@nonce as nvarchar(40))
+	insert into [P2ERPG].Wallets(Wallet,  ActiveNonce) select @Wallet, Cast(@nonce as nvarchar(40))
 end
 GO
 
@@ -41,7 +41,7 @@ CREATE PROCEDURE [P2ERPG].[wallets_sign]
 as
 begin
 	declare @nonce as bigint = rand() * POWER(10, 5) * POWER(10, 5) * POWER(10, 5)
-	update Wallets set ActiveNonce = CAST(@nonce as nvarchar(20)), LastSignedNonce = @SignedNonce, LastSignIn =  GETUTCDATE() where WalletId = @WalletId
+	update [P2ERPG].Wallets set ActiveNonce = CAST(@nonce as nvarchar(20)), LastSignedNonce = @SignedNonce, LastSignIn =  GETUTCDATE() where WalletId = @WalletId
 end
 
 GO
