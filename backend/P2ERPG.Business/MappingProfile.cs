@@ -3,6 +3,7 @@ using AutoMapper;
 using BilbolStack.Boonamai.P2ERPG.Business.Records.Characters;
 using Entities = BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
+using BilbolStack.Boonamai.P2ERPG.Business.Records.Wallets;
 
 
 namespace BilbolStack.Boonamai.P2ERPG.Business
@@ -22,6 +23,9 @@ namespace BilbolStack.Boonamai.P2ERPG.Business
             CreateMap<Armor, Entities.Equipment.Armor>();
             CreateMap<Shield, Entities.Equipment.Shield>();
             CreateMap<Weapon, Entities.Equipment.Weapon>();
+
+            CreateMap<Entities.Wallets.WalletAccount, Wallet>();
+            CreateMap<Wallet, Entities.Wallets.WalletAccount>();
         }
     }
 }

@@ -5,7 +5,7 @@ using Entities = BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Characters
 {
-    public class CharacterEquipmentManager
+    public class CharacterEquipmentManager : ICharacterEquipmentManager
     {
         private readonly ICharacterAssignedEquipmentRepository _characterAssignedEquipmentRepository;
         private readonly IMapper _mapper;

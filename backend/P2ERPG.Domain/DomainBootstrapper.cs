@@ -2,6 +2,7 @@
 using BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Configuration;
 using BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment;
 using BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Migrator;
+using BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Wallets;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BilbolStack.Boonamai.P2ERPG.Domain
@@ -16,6 +17,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain
             serviceCollection.AddTransient<IShieldsRepository, ShieldsMockRepository>();
             serviceCollection.AddTransient<ICharactersRepository, CharactersMockRepository>();
             serviceCollection.AddTransient<ICharacterAssignedEquipmentRepository, CharacterAssignedEquipmentRepository>();
+            serviceCollection.AddTransient<IWalletAccountRepository, WalletAccountRepository>();
             serviceCollection.AddTransient<IMigratorRepository, MigratorRepository>();
         }
     }
