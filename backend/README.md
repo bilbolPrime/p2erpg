@@ -8,5 +8,7 @@ C# .net 9
 `/EnvironmentSettings` returns enviroment and version.
 #### Security
 `/Security/Challenge` requests a challenge to sign.
+
 `/Security/SignIn` submits a signature.
+
 `/Security/Test` tests if token is valid.
