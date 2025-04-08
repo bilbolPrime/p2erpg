@@ -7,6 +7,7 @@ using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Shields;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Weapons;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Migrations;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Sanity;
+using BilbolStack.Boonamai.P2ERPG.Business.Managers.Security;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Wallets;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,7 +27,8 @@ namespace BilbolStack.Boonamai.P2ERPG.Business
             serviceCollection.AddSingleton<IArmorsManager, ArmorsManager>();
             serviceCollection.AddSingleton<IEquipmentsManager, EquipmentsManager>();
             serviceCollection.AddSingleton<ICharacterEquipmentManager, CharacterEquipmentManager>();
-            serviceCollection.AddSingleton<IWalletsManager, WalletsManager>(); 
+            serviceCollection.AddSingleton<IWalletsManager, WalletsManager>();
+            serviceCollection.AddSingleton<ISecurityManager, SecurityManager>();
         }
     }
 }

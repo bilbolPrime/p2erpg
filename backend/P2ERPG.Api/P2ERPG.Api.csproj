@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\P2ERPG.Business\P2ERPG.Business.csproj" />
     <ProjectReference Include="..\P2ERPG.Common\P2ERPG.Common.csproj" />
+    <ProjectReference Include="..\P2ERPG.Crypto\P2ERPG.Crypto.csproj" />
     <ProjectReference Include="..\P2ERPG.Domain\P2ERPG.Domain.csproj" />
   </ItemGroup>
 
