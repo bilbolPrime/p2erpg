@@ -87,13 +87,13 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Security
             return tokenHandler.WriteToken(token);
         }
 
-        public async Task AssertAccess(string wallet, string signature)
+        public async Task AssertAccess(string wallet, string token)
         {
             try
             {
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_jwtSecret);
-                tokenHandler.ValidateToken(signature, new TokenValidationParameters
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),

@@ -14,9 +14,9 @@ namespace BilbolStack.Boonamai.P2ERPG.Api.Filters
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            var signature = context.HttpContext.Request.Headers[Headers.AUTHORIZATION].FirstOrDefault()?.Split(" ").Last();
+            var token = context.HttpContext.Request.Headers[Headers.AUTHORIZATION].FirstOrDefault()?.Split(" ").Last();
             var account = context.HttpContext.Request.Headers[Headers.WALLET].FirstOrDefault();
-            _securityManager.AssertAccess(account, signature).GetAwaiter().GetResult();
+            _securityManager.AssertAccess(account, token).GetAwaiter().GetResult();
         }
 
         public void OnActionExecuted(ActionExecutedContext context)
