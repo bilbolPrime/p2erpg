@@ -15,6 +15,10 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
             var attackerSpeed = battle.attacker.speed * SpeedFactor(battle.attArmorType, battle.attacker.characterType);
             var defenderSpeed = battle.defender.speed * SpeedFactor(battle.defArmorType, battle.defender.characterType);
 
+            var attackerDodgeChance = Math.Min(0.9f, DodgeChance(battle.attacker.agility, battle.defender.concentration, battle.attArmorType, battle.attacker.characterType));
+            var defenderDodgeChance = Math.Min(0.9f, DodgeChance(battle.defender.agility, battle.attacker.concentration, battle.defArmorType, battle.defender.characterType));
+
+
             List<BattleRound> rounds = new List<BattleRound>();
             int round = 0;
 
@@ -26,12 +30,30 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 if (roll < battle.defender.speed)
                 {
                     var damage = (int)((0.1f + rnd.NextDouble()) * battle.defender.strength * DamageFactor(battle.defWeaponType, battle.attArmorType, battle.attShieldType, battle.defender.characterType));
+
+                    roll = rnd.Next(100);
+                    
+                    if(roll < 100 * attackerDodgeChance)
+                    {
+                        damage = 0;
+                        attackerDodgeChance *= 0.9f;
+                    }
+
                     hpAttacker -= damage;
                     rounds.Add(new BattleRound(false, damage, hpAttacker));
                 }
                 else
                 {
                     var damage = (int)((0.1f + rnd.NextDouble()) * battle.attacker.strength * DamageFactor(battle.attWeaponType, battle.defArmorType, battle.defShieldType, battle.attacker.characterType));
+
+                    roll = rnd.Next(100);
+
+                    if (roll < 100 * defenderDodgeChance)
+                    {
+                        damage = 0;
+                        defenderDodgeChance *= 0.9f;
+                    }
+
                     hpDefender -= damage;
                     rounds.Add(new BattleRound(true, damage, hpDefender));
                 }
@@ -40,6 +62,38 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
             }
 
             return new BattleResult(rounds, hpDefender <= 0);
+        }
+
+        private float DodgeChance(int agility, int concentration, ArmorType armorType, CharacterType characterType)
+        {
+            var toReturn = (1f * agility) / (3f + concentration);
+
+            if (armorType == ArmorType.BirthdaySuit)
+            {
+                toReturn *= 1.2f;
+            }
+
+            if (armorType == ArmorType.Light)
+            {
+                toReturn *= 1.1f;
+            }
+
+            if (armorType == ArmorType.Heavy)
+            {
+                toReturn *= 0.9f;
+            }
+
+            if(characterType == CharacterType.Elf)
+            {
+                toReturn *= 1.25f;
+            }
+
+            if (characterType == CharacterType.Orc)
+            {
+                toReturn *= 0.75f;
+            }
+
+            return toReturn;
         }
 
         private float SpeedFactor(ArmorType armorType, CharacterType characterType)
@@ -68,14 +122,11 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
             if (weaponType == WeaponType.Fists)
             {
                 toReturn *= 0.5f;
+
                 if (characterType == CharacterType.Orc)
                 {
-                    toReturn *= 1.5f; //(0.5 * 1.5 = 0.75f)
+                    toReturn *= 1.5f;
                 }
-                /*if (characterType == CharacterClass.Fister)
-                {
-                    // Maybe have a Monk fist class or smth of the sort? Human related?
-                }*/
             }
 
             if (weaponType == WeaponType.Bow)
@@ -103,7 +154,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 if (armorType == ArmorType.Heavy)
                 {
                     toReturn *= 0.5f;
-                }     
+                }
             }
 
 
@@ -118,18 +169,19 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
 
             if (weaponType == WeaponType.TwoHandedMace || weaponType == WeaponType.TwoHandedSword)
             {
-                if (characterType == CharacterType.Orc){
-                toReturn *= 1.5f;
+                if (characterType == CharacterType.Orc)
+                {
+                    toReturn *= 1.5f;
                 }
 
                 if (armorType == ArmorType.Light)
                 {
-                toReturn *= 0.9f;
+                    toReturn *= 1.2f;
                 }
 
                 if (armorType == ArmorType.Heavy)
                 {
-                toReturn *= 1.1f;
+                    toReturn *= 0.8f;
                 }
             }
 
