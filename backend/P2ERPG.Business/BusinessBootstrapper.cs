@@ -29,6 +29,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business
             serviceCollection.AddSingleton<ICharacterEquipmentManager, CharacterEquipmentManager>();
             serviceCollection.AddSingleton<IWalletsManager, WalletsManager>();
             serviceCollection.AddSingleton<ISecurityManager, SecurityManager>();
+            serviceCollection.AddSingleton<IPvETargetManager, PvETargetManager>(); 
         }
     }
 }
