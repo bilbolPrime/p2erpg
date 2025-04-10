@@ -2,8 +2,9 @@
 {
     public enum CharacterType
     {
-        Human = 0,
-        Orc = 1,
-        Elf = 2
+        Other = 0,
+        Human = 1,
+        Orc = 2,
+        Elf = 3
     }
 }

@@ -10,9 +10,9 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
         {
             return target switch
             {
-                PvETarget.WoodenDummy => new Character(1, 1, "Wooden Dummy", CharacterType.Human, 10, 0, 0, 0, 0, 0, 0, 0),
-                PvETarget.Chicken => new Character(1, 1, "Chicken", CharacterType.Human, 15, 2, 1, 0, 0, 0, 0, 0),
-                PvETarget.Dogo => new Character(1, 1, "Dogo", CharacterType.Human, 20, 3, 2, 0, 0, 0, 0, 0),
+                PvETarget.WoodenDummy => new Character(1, 1, "Wooden Dummy", CharacterType.Other, 10, 0, 0, 0, 0, 0, 0, 0),
+                PvETarget.Chicken => new Character(1, 1, "Chicken", CharacterType.Other, 15, 2, 1, 0, 0, 0, 0, 0),
+                PvETarget.Dogo => new Character(1, 1, "Dogo", CharacterType.Other, 20, 3, 2, 0, 0, 0, 0, 0),
                 PvETarget.DaphneBlake => new Character(1, 1, "Daphne Blake", CharacterType.Human, 25, 4, 3, 1, 1, 1, 0, 0),
                 PvETarget.Thug => new Character(1, 1, "Thug", CharacterType.Human, 30, 5, 4, 2, 2, 2, 0, 0),
                 PvETarget.Sellsword => new Character(1, 1, "Sellsword", CharacterType.Human, 35, 6, 5, 3, 3, 3, 0, 0),
