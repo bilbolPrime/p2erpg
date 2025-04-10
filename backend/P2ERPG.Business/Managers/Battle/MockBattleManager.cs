@@ -17,5 +17,13 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
 
             return base.Battle(battle);
         }
+
+        public override BattleResult Battle(BattlePvE battle)
+        {
+            Character attacker = new Character(1, 1, "", CharacterType.Human, 1000, 100, 5, 2, 3, 1, 1, 1);
+            battle = new BattlePvE(attacker, WeaponType.Sword, ShieldType.None, ArmorType.Medium, PvETarget.WoodenDummy);
+
+            return base.Battle(battle);
+        }
     }
 }

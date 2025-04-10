@@ -64,6 +64,78 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
             return new BattleResult(rounds, hpDefender <= 0);
         }
 
+        public virtual BattleResult Battle(BattlePvE battle)
+        {
+            var hpAttacker = battle.Attacker.hp;
+            var target = CreateTarget(battle.Target);
+            var hpTarget = target.hp;
+
+            var attackerSpeed = battle.Attacker.speed * SpeedFactor(battle.AttArmorType, battle.Attacker.characterType);
+            var targetSpeed = target.speed * 0.5f; // Target is slower
+
+            var attackerDodgeChance = Math.Min(0.9f, DodgeChance(battle.Attacker.agility, target.concentration, battle.AttArmorType, battle.Attacker.characterType));
+            var targetDodgeChance = Math.Min(0.9f, DodgeChance(target.agility, battle.Attacker.concentration, ArmorType.BirthdaySuit, target.characterType) * 0.5f); // Target has lower dodge chance
+
+            List<BattleRound> rounds = new List<BattleRound>();
+            int round = 0;
+
+            var rnd = new Random();
+            while (round <= 50 && hpAttacker > 0 && hpTarget > 0)
+            {
+                var roll = rnd.Next((int)(battle.Attacker.speed + targetSpeed));
+
+                if (roll < targetSpeed)
+                {
+                    var damage = (int)((0.1f + rnd.NextDouble()) * target.strength * 0.5f); // Target deals half damage
+                    roll = rnd.Next(100);
+                    
+                    if(roll < 100 * attackerDodgeChance)
+                    {
+                        damage = 0;
+                        attackerDodgeChance *= 0.9f;
+                    }
+
+                    hpAttacker -= damage;
+                    rounds.Add(new BattleRound(false, damage, hpAttacker));
+                }
+                else
+                {
+                    var damage = (int)((0.1f + rnd.NextDouble()) * battle.Attacker.strength * DamageFactor(battle.AttWeaponType, ArmorType.BirthdaySuit, ShieldType.None, battle.Attacker.characterType));
+                    roll = rnd.Next(100);
+
+                    if (roll < 100 * targetDodgeChance)
+                    {
+                        damage = 0;
+                        targetDodgeChance *= 0.9f;
+                    }
+
+                    hpTarget -= damage;
+                    rounds.Add(new BattleRound(true, damage, hpTarget));
+                }
+
+                round++;
+            }
+
+            return new BattleResult(rounds, hpTarget <= 0);
+        }
+
+        private Character CreateTarget(PvETarget target)
+        {
+            return target switch
+            {
+                PvETarget.WoodenDummy => new Character(1, 1, "Wooden Dummy", CharacterType.WoodenDummy, 10, 0, 0, 0, 0, 0, 0, 0),
+                PvETarget.Chicken => new Character(1, 1, "Chicken", CharacterType.Chicken, 15, 2, 1, 0, 0, 0, 0, 0),
+                PvETarget.Dogo => new Character(1, 1, "Dogo", CharacterType.Dogo, 20, 3, 2, 0, 0, 0, 0, 0),
+                PvETarget.DaphneBlake => new Character(1, 1, "Daphne Blake", CharacterType.DaphneBlake, 25, 4, 3, 1, 1, 1, 0, 0),
+                PvETarget.Thug => new Character(1, 1, "Thug", CharacterType.Thug, 30, 5, 4, 2, 2, 2, 0, 0),
+                PvETarget.Sellsword => new Character(1, 1, "Sellsword", CharacterType.Sellsword, 35, 6, 5, 3, 3, 3, 0, 0),
+                PvETarget.Uruk => new Character(1, 1, "Uruk", CharacterType.Uruk, 40, 7, 6, 4, 4, 4, 0, 0),
+                PvETarget.Legolas => new Character(1, 1, "Legolas", CharacterType.Legolas, 45, 8, 7, 5, 5, 5, 0, 0),
+                PvETarget.Batman => new Character(1, 1, "Batman", CharacterType.Batman, 50, 9, 8, 6, 6, 6, 0, 0),
+                _ => throw new ArgumentException($"Unknown PvE target: {target}")
+            };
+        }
+
         private float DodgeChance(int agility, int concentration, ArmorType armorType, CharacterType characterType)
         {
             var toReturn = (1f * agility) / (3f + concentration);
