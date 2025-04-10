@@ -6,7 +6,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
 {
     public class MockBattleManager : BattleManager
     {
-        public MockBattleManager() : base() { }
+        public MockBattleManager(IPvETargetManager targetManager) : base(targetManager) { }
 
         public override BattleResult Battle(BattlePvP battle)
         {
