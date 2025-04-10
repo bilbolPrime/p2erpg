@@ -5,7 +5,11 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
 {
     public class BattleManager : IBattleManager
     {
-        public BattleManager() { }
+        private readonly IPvETargetManager _pvETargetManager;
+        public BattleManager(IPvETargetManager pvETargetManager) 
+        {
+            _pvETargetManager = pvETargetManager;
+        }
 
         public virtual BattleResult Battle(BattlePvP battle)
         {
@@ -62,6 +66,64 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
             }
 
             return new BattleResult(rounds, hpDefender <= 0);
+        }
+
+        public virtual BattleResult Battle(BattlePvE battle)
+        {
+            var hpAttacker = battle.attacker.hp;
+            var target = _pvETargetManager.GetTarget(battle.target);
+            var hpTarget = target.hp;
+            var targetArmor = _pvETargetManager.GetArmorType(battle.target);
+            var targetShield = _pvETargetManager.GetShieldType(battle.target);
+            var targetWeapon = _pvETargetManager.GetWeaponType(battle.target);
+
+            var attackerSpeed = battle.attacker.speed * SpeedFactor(battle.attArmorType, battle.attacker.characterType);
+            var targetSpeed = target.speed * 0.5f; // Target is slower
+
+            var attackerDodgeChance = Math.Min(0.9f, DodgeChance(battle.attacker.agility, target.concentration, battle.attArmorType, battle.attacker.characterType));
+            var targetDodgeChance = Math.Min(0.9f, DodgeChance(target.agility, battle.attacker.concentration, targetArmor, target.characterType) * 0.5f); // Target has lower dodge chance
+
+            List<BattleRound> rounds = new List<BattleRound>();
+            int round = 0;
+
+            var rnd = new Random();
+            while (round <= 50 && hpAttacker > 0 && hpTarget > 0)
+            {
+                var roll = rnd.Next((int)(battle.attacker.speed + targetSpeed));
+
+                if (roll < targetSpeed)
+                {
+                    var damage = (int)((0.1f + rnd.NextDouble()) * target.strength * 0.5f); // Target deals half damage
+                    roll = rnd.Next(100);
+                    
+                    if(roll < 100 * attackerDodgeChance)
+                    {
+                        damage = 0;
+                        attackerDodgeChance *= 0.9f;
+                    }
+
+                    hpAttacker -= damage;
+                    rounds.Add(new BattleRound(false, damage, hpAttacker));
+                }
+                else
+                {
+                    var damage = (int)((0.1f + rnd.NextDouble()) * battle.attacker.strength * DamageFactor(battle.attWeaponType, targetArmor, targetShield, battle.attacker.characterType));
+                    roll = rnd.Next(100);
+
+                    if (roll < 100 * targetDodgeChance)
+                    {
+                        damage = 0;
+                        targetDodgeChance *= 0.9f;
+                    }
+
+                    hpTarget -= damage;
+                    rounds.Add(new BattleRound(true, damage, hpTarget));
+                }
+
+                round++;
+            }
+
+            return new BattleResult(rounds, hpTarget <= 0);
         }
 
         private float DodgeChance(int agility, int concentration, ArmorType armorType, CharacterType characterType)

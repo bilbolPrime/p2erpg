@@ -22,7 +22,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Api.Controllers
         [HttpGet]
         public async Task<BattleResult> Get()
         {
-            return _battleManager.Battle(null);
+            return _battleManager.Battle((BattlePvP?) null);
         }
     }
 }
