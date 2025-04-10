@@ -2,8 +2,15 @@
 {
     public enum CharacterType
     {
-        Human = 0,
-        Orc = 1,
-        Elf = 2
+        Player = 'p',
+        WoodenDummy = 'w',
+        Chicken = 'c',
+        Dogo = 'd',
+        DaphneBlake = 'b',
+        Thug = 't',
+        Sellsword = 's',
+        Uruk = 'u',
+        Legolas = 'l',
+        Batman = 'm'
     }
 }

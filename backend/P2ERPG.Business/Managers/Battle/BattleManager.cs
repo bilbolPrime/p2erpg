@@ -67,7 +67,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
         public virtual BattleResult Battle(BattlePvE battle)
         {
             var hpAttacker = battle.Attacker.hp;
-            var target = CreateTarget(battle.Target);
+            var target = PvETargetManager.GetTarget(battle.Target);
             var hpTarget = target.hp;
 
             var attackerSpeed = battle.Attacker.speed * SpeedFactor(battle.AttArmorType, battle.Attacker.characterType);
