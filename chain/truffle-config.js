@@ -23,5 +23,9 @@ module.exports = {
             network_id: "*", // Any network (default: none)
 	}},  plugins: [
     'truffle-flatten'
-  ]
-};
+  ],
+  compilers: {
+  solc: {
+    version: "0.8.13"
+}
+}};
