@@ -12,6 +12,9 @@ Dummy token for testing purposes. Wallets can mint by calling the mint function.
 - let token = await TestToken.deployed()
 - await token.mint()
 
+### Characters.sol
+NFT contract to encapsulate a characters stats and information.
+
 # How to
 1 - Install Ganache
 
