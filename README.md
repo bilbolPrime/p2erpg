@@ -5,7 +5,7 @@ P2ERPG is a simple opensource basic play to earn RPG project under the GNU GENER
 P2ERPG uses C# (.net 9) for backend, TSQL for database, Angular for front end and Solidity for chain.
 
 # Roadmap
-The project is still under construction but we hope to have a working demo on testnet by May 2025.
+The project is still under construction but we hope to have a working demo on testnet by ~May~ June 2025.
 
 # End game
 Our endgame is to be a starting point for other projects.
