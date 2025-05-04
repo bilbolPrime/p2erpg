@@ -15,6 +15,15 @@ Dummy token for testing purposes. Wallets can mint by calling the mint function.
 ### Characters.sol
 NFT contract to encapsulate a characters stats and information.
 
+### Weapons.sol
+NFT contract to encapsulate a weapon stats and information.
+
+### Armors.sol
+NFT contract to encapsulate an armor stats and information.
+
+### Shields.sol
+NFT contract to encapsulate a shield stats and information.
+
 # How to
 1 - Install Ganache
 
