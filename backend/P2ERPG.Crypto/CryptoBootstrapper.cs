@@ -1,4 +1,5 @@
-﻿using BilbolStack.Boonamai.P2ERPG.Crypto.Validator;
+﻿using BilbolStack.Boonamai.P2ERPG.Crypto.NFTs;
+using BilbolStack.Boonamai.P2ERPG.Crypto.Validator;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BilbolStack.Boonamai.P2ERPG.Crypto.Crypto
@@ -8,6 +9,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Crypto.Crypto
         public static void BootstrapCrypto(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<IChainValidator, ChainValidator>();
+            serviceCollection.AddSingleton<INFTContractScraper, NFTContractScraper>();
         }
     }
 }
