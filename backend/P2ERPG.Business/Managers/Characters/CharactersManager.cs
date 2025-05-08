@@ -35,7 +35,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Characters
 
         public async Task UpdateAsync(IEnumerable<Character> characters)
         {
-            var mappedData = _mapper.Map<Entities.Characters.Character>(characters);
+            var mappedData = _mapper.Map<IEnumerable<Entities.Characters.Character>>(characters);
             await _charactersRepository.UpdateAsync(mappedData);
         }
     }

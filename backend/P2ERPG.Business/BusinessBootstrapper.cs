@@ -1,6 +1,7 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Characters;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Configuration;
+using BilbolStack.Boonamai.P2ERPG.Business.Managers.Crypto;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Armors;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Shields;
@@ -29,7 +30,8 @@ namespace BilbolStack.Boonamai.P2ERPG.Business
             serviceCollection.AddSingleton<ICharacterEquipmentManager, CharacterEquipmentManager>();
             serviceCollection.AddSingleton<IWalletsManager, WalletsManager>();
             serviceCollection.AddSingleton<ISecurityManager, SecurityManager>();
-            serviceCollection.AddSingleton<IPvETargetManager, PvETargetManager>(); 
+            serviceCollection.AddSingleton<IPvETargetManager, PvETargetManager>();
+            serviceCollection.AddSingleton<INFTScraperManager, NFTScraperManager>();
         }
     }
 }

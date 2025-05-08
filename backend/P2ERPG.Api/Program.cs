@@ -41,6 +41,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Api
             builder.Services.AddOptions<EnvironmentSettings>().BindConfiguration(EnvironmentSettings.Key);
             builder.Services.AddOptions<DBSettings>().BindConfiguration(DBSettings.Key);
             builder.Services.AddOptions<CryptoJWTOptions>().BindConfiguration(CryptoJWTOptions.KEY);
+            builder.Services.AddOptions<ChainSettings>().BindConfiguration(ChainSettings.KEY);
 
             builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
