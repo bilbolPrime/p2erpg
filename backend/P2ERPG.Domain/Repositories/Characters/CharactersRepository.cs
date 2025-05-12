@@ -1,4 +1,5 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Common.Options;
+using BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 using BilbolStack.Boonamai.P2ERPG.Domain.Entities.Characters;
 using Microsoft.Extensions.Options;
 using MoreLinq;
@@ -9,6 +10,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
     {
         private const string GET_CHARACTERS = "[P2ERPG].[characters_get]";
         private const string UPDATE_CHARACTERS = "[P2ERPG].[characters_update]";
+        private const string UPDATE_CHARACTERS_OWNERSHIP = "[P2ERPG].[characters_updateOwnserhip]";
 
         public CharactersRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)
         {
@@ -52,6 +54,16 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
             };
 
             await Execute(UPDATE_CHARACTERS, param);
+        }
+
+        public virtual async Task UpdateAsync(IEnumerable<NFTOwnership> nFTOwnerships)
+        {
+            var param = new
+            {
+                nFTOwnerships = nFTOwnerships.ToDataTable()
+            };
+
+            await Execute(UPDATE_CHARACTERS_OWNERSHIP, param);
         }
     }
 }

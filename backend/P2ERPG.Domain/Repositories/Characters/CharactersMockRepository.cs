@@ -1,4 +1,5 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Common.Options;
+using BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 using BilbolStack.Boonamai.P2ERPG.Domain.Entities.Characters;
 using Microsoft.Extensions.Options;
 
@@ -36,6 +37,11 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
         }
 
         public override async Task UpdateAsync(IEnumerable<Character> characters)
+        {
+            await Task.CompletedTask;
+        }
+
+        public override async Task UpdateAsync(IEnumerable<NFTOwnership> nFTOwnerships)
         {
             await Task.CompletedTask;
         }

@@ -3,6 +3,7 @@ using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Armors;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Weapons;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Shields;
+using BilbolStack.Boonamai.P2ERPG.Business.Records;
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment
 {
@@ -78,6 +79,21 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment
         public async Task UpdateAsync(IEnumerable<Shield> shields)
         {
             await _shieldsManager.UpdateAsync(shields);
+        }
+
+        public async Task UpdateArmorsOwnershipAsync(IEnumerable<NFTOwnership> nFTOwnerships)
+        {
+            await _armorsManager.UpdateAsync(nFTOwnerships);
+        }
+
+        public async Task UpdateWeaponsOwnershipAsync(IEnumerable<NFTOwnership> nFTOwnerships)
+        {
+            await _weaponsManager.UpdateAsync(nFTOwnerships);
+        }
+
+        public async Task UpdateShieldOwnershipAsync(IEnumerable<NFTOwnership> nFTOwnerships)
+        {
+            await _shieldsManager.UpdateAsync(nFTOwnerships);
         }
     }
 }

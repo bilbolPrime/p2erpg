@@ -2,6 +2,7 @@
 using BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment;
 using Entities = BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
+using BilbolStack.Boonamai.P2ERPG.Business.Records;
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Armors
 {
@@ -36,6 +37,12 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Armors
         public async Task UpdateAsync(IEnumerable<Armor> armors)
         {
             var mappedData = _mapper.Map<IEnumerable<Entities.Equipment.Armor>>(armors);
+            await _armorsRepository.UpdateAsync(mappedData);
+        }
+
+        public async Task UpdateAsync(IEnumerable<NFTOwnership> nFTOwnerships)
+        {
+            var mappedData = _mapper.Map<IEnumerable<Entities.NFTOwnership>>(nFTOwnerships);
             await _armorsRepository.UpdateAsync(mappedData);
         }
     }

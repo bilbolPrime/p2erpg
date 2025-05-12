@@ -1,4 +1,5 @@
-﻿using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
+﻿using BilbolStack.Boonamai.P2ERPG.Business.Records;
+using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment
 {
@@ -16,5 +17,8 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment
         Task UpdateAsync(IEnumerable<Weapon> weapons);
         Task UpdateAsync(Shield shield);
         Task UpdateAsync(Weapon weapon);
+        Task UpdateArmorsOwnershipAsync(IEnumerable<NFTOwnership> nFTOwnerships);
+        Task UpdateWeaponsOwnershipAsync(IEnumerable<NFTOwnership> nFTOwnerships);
+        Task UpdateShieldOwnershipAsync(IEnumerable<NFTOwnership> nFTOwnerships);
     }
 }

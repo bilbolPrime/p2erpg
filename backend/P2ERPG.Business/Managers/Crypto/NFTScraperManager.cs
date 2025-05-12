@@ -10,6 +10,7 @@ using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Armors;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Shields;
 using BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Weapons;
+using BilbolStack.Boonamai.P2ERPG.Business.Records;
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Crypto
 {
@@ -44,27 +45,51 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Crypto
                 using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
                     {
-                        if (results.Characters.Any())
+                        if (results.Characters.Where(i => i.IsMint).Any())
                         {
-                            var characters = results.Characters.Select(i => new Character(0, i.MintId, i.Wallet, CharacterType.Other, 0, 0, 0, 0, 0, 0, 0, 0));
+                            var characters = results.Characters.Where(i => i.IsMint).Select(i => new Character(0, i.MintId, i.Wallet, CharacterType.Other, 0, 0, 0, 0, 0, 0, 0, 0));
                             await _charactersManager.UpdateAsync(characters);
                         }
 
-                        if (results.Armors.Any())
+                        if (results.Characters.Where(i => !i.IsMint).Any())
                         {
-                            var armors = results.Armors.Select(i => new Armor(0, i.MintId, i.Wallet, ArmorType.BirthdaySuit, 0));
+                            var characters = results.Characters.Where(i => !i.IsMint).Select(i => new NFTOwnership(i.MintId, i.Wallet));
+                            await _charactersManager.UpdateAsync(characters);
+                        }
+
+                        if (results.Armors.Where(i => i.IsMint).Any())
+                        {
+                            var armors = results.Armors.Where(i => i.IsMint).Select(i => new Armor(0, i.MintId, i.Wallet, ArmorType.BirthdaySuit, 0));
                             await _armorsManager.UpdateAsync(armors);
                         }
 
-                        if (results.Shields.Any())
+                        if (results.Armors.Where(i => !i.IsMint).Any())
                         {
-                            var shields = results.Shields.Select(i => new Shield(0, i.MintId, i.Wallet, ShieldType.None, 0));
+                            var armors = results.Armors.Where(i => !i.IsMint).Select(i => new NFTOwnership(i.MintId, i.Wallet));
+                            await _armorsManager.UpdateAsync(armors);
+                        }
+
+                        if (results.Shields.Where(i => i.IsMint).Any())
+                        {
+                            var shields = results.Shields.Where(i => i.IsMint).Select(i => new Shield(0, i.MintId, i.Wallet, ShieldType.None, 0));
                             await _shieldsManager.UpdateAsync(shields);
                         }
 
-                        if (results.Weapons.Any())
+                        if (results.Shields.Where(i => !i.IsMint).Any())
                         {
-                            var weapons = results.Weapons.Select(i => new Weapon(0, i.MintId, i.Wallet, WeaponType.Fists, 0));
+                            var shields = results.Shields.Where(i => !i.IsMint).Select(i => new NFTOwnership(i.MintId, i.Wallet));
+                            await _shieldsManager.UpdateAsync(shields);
+                        }
+
+                        if (results.Weapons.Where(i => i.IsMint).Any())
+                        {
+                            var weapons = results.Weapons.Where(i => i.IsMint).Select(i => new Weapon(0, i.MintId, i.Wallet, WeaponType.Fists, 0));
+                            await _weaponsManager.UpdateAsync(weapons);
+                        }
+
+                        if (results.Weapons.Where(i => !i.IsMint).Any())
+                        {
+                            var weapons = results.Weapons.Where(i => !i.IsMint).Select(i => new NFTOwnership(i.MintId, i.Wallet));
                             await _weaponsManager.UpdateAsync(weapons);
                         }
 

@@ -1,4 +1,5 @@
-﻿using BilbolStack.Boonamai.P2ERPG.Domain.Entities.Characters;
+﻿using BilbolStack.Boonamai.P2ERPG.Domain.Entities;
+using BilbolStack.Boonamai.P2ERPG.Domain.Entities.Characters;
 
 namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
 {
@@ -8,5 +9,6 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters
         Task<IEnumerable<Character>> GetAsync(string wallet);
         Task UpdateAsync(IEnumerable<Character> characters);
         Task UpdateAsync(Character character);
+        Task UpdateAsync(IEnumerable<NFTOwnership> nFTOwnerships);
     }
 }

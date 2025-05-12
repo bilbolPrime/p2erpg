@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BilbolStack.Boonamai.P2ERPG.Business.Records;
 using BilbolStack.Boonamai.P2ERPG.Business.Records.Characters;
 using BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Characters;
 using Entities = BilbolStack.Boonamai.P2ERPG.Domain.Entities;
@@ -36,6 +37,12 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Characters
         public async Task UpdateAsync(IEnumerable<Character> characters)
         {
             var mappedData = _mapper.Map<IEnumerable<Entities.Characters.Character>>(characters);
+            await _charactersRepository.UpdateAsync(mappedData);
+        }
+
+        public async Task UpdateAsync(IEnumerable<NFTOwnership> nFTOwnerships)
+        {
+            var mappedData = _mapper.Map<IEnumerable<Entities.NFTOwnership>>(nFTOwnerships);
             await _charactersRepository.UpdateAsync(mappedData);
         }
     }

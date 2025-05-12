@@ -1,4 +1,5 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Common.Options;
+using BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 using BilbolStack.Boonamai.P2ERPG.Domain.Entities.Equipment;
 using Microsoft.Extensions.Options;
 using MoreLinq;
@@ -9,6 +10,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
     {
         private const string GET_ARMORS = "[P2ERPG].[armors_get]";
         private const string UPDATE_ARMORS = "[P2ERPG].[armors_update]";
+        private const string UPDATE_ARMORS_OWNERSHIP = "[P2ERPG].[armors_updateOwnserhip]";
 
         public ArmorsRepository(IOptions<DBSettings> dbSettings) : base(dbSettings)
         {
@@ -52,6 +54,16 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
         public virtual async Task UpdateAsync(Armor armor)
         {
             await UpdateAsync(new List<Armor>() { armor } );
+        }
+
+        public virtual async Task UpdateAsync(IEnumerable<NFTOwnership> nFTOwnerships)
+        {
+            var param = new
+            {
+                nFTOwnerships = nFTOwnerships.ToDataTable()
+            };
+
+            await Execute(UPDATE_ARMORS_OWNERSHIP, param);
         }
     }
 }

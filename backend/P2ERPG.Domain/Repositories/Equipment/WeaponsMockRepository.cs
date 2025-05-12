@@ -1,4 +1,5 @@
 ﻿using BilbolStack.Boonamai.P2ERPG.Common.Options;
+using BilbolStack.Boonamai.P2ERPG.Domain.Entities;
 using BilbolStack.Boonamai.P2ERPG.Domain.Entities.Equipment;
 using Microsoft.Extensions.Options;
 
@@ -34,6 +35,11 @@ namespace BilbolStack.Boonamai.P2ERPG.Domain.Repositories.Equipment
         }
 
         public override async Task UpdateAsync(Weapon weapon)
+        {
+            await Task.CompletedTask;
+        }
+
+        public override async Task UpdateAsync(IEnumerable<NFTOwnership> nFTOwnerships)
         {
             await Task.CompletedTask;
         }

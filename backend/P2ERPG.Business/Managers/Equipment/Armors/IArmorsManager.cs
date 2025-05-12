@@ -1,4 +1,5 @@
-﻿using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
+﻿using BilbolStack.Boonamai.P2ERPG.Business.Records;
+using BilbolStack.Boonamai.P2ERPG.Business.Records.Equipment;
 
 namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Armors
 {
@@ -8,5 +9,6 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Equipment.Armors
         Task<IEnumerable<Armor>> GetAsync(string wallet);
         Task UpdateAsync(Armor armor);
         Task UpdateAsync(IEnumerable<Armor> armors);
+        Task UpdateAsync(IEnumerable<NFTOwnership> nFTOwnerships);
     }
 }
