@@ -5,6 +5,7 @@
         Other = 0,
         Human = 1,
         Orc = 2,
-        Elf = 3
+        Elf = 3,
+        Skeleton = 4
     }
 }

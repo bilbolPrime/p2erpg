@@ -19,6 +19,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 PvETarget.Uruk => new Character(1, 1, "Uruk", CharacterType.Orc, 40, 7, 6, 4, 4, 4, 0, 0),
                 PvETarget.Legolas => new Character(1, 1, "Legolas", CharacterType.Elf, 45, 8, 7, 5, 5, 5, 0, 0),
                 PvETarget.Batman => new Character(1, 1, "Batman", CharacterType.Human, 50, 9, 8, 6, 6, 6, 0, 0),
+                PvETarget.GhostRider => new Character(1, 1, "Ghost Rider", CharacterType.Skeleton, 60, 10, 9, 7, 7, 7, 0, 0),
                 _ => throw new ArgumentException($"Unknown PvE target: {target}")
             };
         }
@@ -36,6 +37,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 PvETarget.Uruk => ArmorType.Heavy,
                 PvETarget.Legolas => ArmorType.Medium,
                 PvETarget.Batman => ArmorType.Heavy,
+                PvETarget.GhostRider => ArmorType.Heavy,
                 _ => throw new ArgumentException($"Unknown PvE target: {target}")
             };
         }
@@ -53,6 +55,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 PvETarget.Uruk => ShieldType.None,
                 PvETarget.Legolas => ShieldType.Medium,
                 PvETarget.Batman => ShieldType.None,
+                PvETarget.GhostRider => ShieldType.None,
                 _ => throw new ArgumentException($"Unknown PvE target: {target}")
             };
         }
@@ -70,6 +73,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 PvETarget.Uruk => WeaponType.TwoHandedMace,
                 PvETarget.Legolas => WeaponType.Bow,
                 PvETarget.Batman => WeaponType.TwoHandedSword,
+                PvETarget.GhostRider => WeaponType.Mace,
                 _ => throw new ArgumentException($"Unknown PvE target: {target}")
             };
         }

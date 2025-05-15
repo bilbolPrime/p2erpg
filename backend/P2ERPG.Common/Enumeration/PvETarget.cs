@@ -10,6 +10,7 @@ namespace BilbolStack.Boonamai.P2ERPG.Common.Enumeration
         Sellsword,
         Uruk,
         Legolas,
-        Batman
+        Batman,
+        GhostRider
     }
 } 
