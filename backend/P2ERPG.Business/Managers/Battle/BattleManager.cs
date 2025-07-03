@@ -150,6 +150,11 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 toReturn *= 1.25f;
             }
 
+            if(characterType == CharacterType.Skeleton)
+            {
+                toReturn *= 1.1f;
+            }
+
             if (characterType == CharacterType.Orc)
             {
                 toReturn *= 0.75f;
@@ -219,7 +224,10 @@ namespace BilbolStack.Boonamai.P2ERPG.Business.Managers.Battle
                 }
             }
 
-
+            if (weaponType == WeaponType.Mace && characterType == CharacterType.Skeleton)
+            {
+                toReturn *= 1.5f;
+            }
 
             if (weaponType == WeaponType.Mace || weaponType == WeaponType.TwoHandedMace)
             {
